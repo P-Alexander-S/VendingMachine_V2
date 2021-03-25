@@ -2,6 +2,7 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 
 public class History {
@@ -40,8 +41,10 @@ public class History {
         this.time = time;
     }
 
-    public static void getHistory(ArrayList<History> histories) {
+    public static void getHistory(ArrayList<History> historyArrayList) {
 
+        ArrayList<History> histories = historyArrayList;
+        Collections.reverse(histories);
         Date date1 = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd_MM_yyyy_hh-mm");
         String formatFileName = simpleDateFormat.format(date1.getTime());

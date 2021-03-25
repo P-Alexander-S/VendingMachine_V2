@@ -35,7 +35,8 @@ public class VendingMachine {
 
     public void buy() {
         while (true) {
-            System.out.println("Введите номер ячейки, цену, дату и время приобретения товара. Например:\n"
+            NewVendingMachine.menu.stringFormat("Введите номер ячейки, цену, дату и время приобретения товара." +
+                    " Например:\n"
                     + "B1 99 24-03-2021 09:30\nГде B1 - номер ячейки (латинские буквы), " +
                     "99 - цена, 24-03-2021 - дата, 17:25 - время");
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
