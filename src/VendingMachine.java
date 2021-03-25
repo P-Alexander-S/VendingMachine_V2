@@ -12,7 +12,7 @@ public class VendingMachine {
     public ArrayList<Cell> cells = new ArrayList();
 
 
-    public VendingMachine(){
+    public VendingMachine() {
 
     }
 
@@ -94,7 +94,8 @@ public class VendingMachine {
                     NewVendingMachine.history.add(history);
                     desiredCell.setQuantity(desiredCell.getQuantity() - 1);
                     desiredCell.products.remove(0);
-                    NewVendingMachine.menu.stringFormat("Спасибо за покупку!");
+                    NewVendingMachine.menu.stringFormat("Спасибо за покупку! Ваша сдача - "
+                            + (priceOffer - price) + " руб.");
                     break;
                 }
 
