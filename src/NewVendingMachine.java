@@ -50,9 +50,9 @@ public class NewVendingMachine {
                             break;
                         }
                         if (answer != 1) {
-                            if(answer == 2)
+                            if (answer == 2)
                                 menu.stringFormat("Выходим в меню.");
-                            menu.stringFormat("Были варианты 1 и 2. А Вы ввели " + answer +
+                            else menu.stringFormat("Были варианты 1 и 2. А Вы ввели " + answer +
                                     "! Ничего не поделать, выходим в главное меню.");
                             break;
                         }

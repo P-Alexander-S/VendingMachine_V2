@@ -6,7 +6,7 @@ import java.util.*;
 public class VendingMachine {
 
     public static ArrayList<String> arrayOfProducts = new ArrayList<>(Arrays.asList("Mango", "Melon",
-            "Watermelon", "Limon", "Orange", "Banana", "Peach", "Apple", "Cherry"));
+            "Watermelon", "Lemon", "Orange", "Banana", "Peach", "Apple", "Cherry"));
     private ArrayList<String> numberOfCell = new ArrayList<>(Arrays.asList("A1", "A2", "A3", "B1",
             "B2", "B3", "C1", "C2", "C3"));
     public ArrayList<Cell> cells = new ArrayList();
@@ -52,14 +52,14 @@ public class VendingMachine {
                 String desiredCellNum = strings[0].toUpperCase(Locale.ROOT);
                 int priceOffer = Integer.parseInt(strings[1]);
                 String date = strings[2];
-                if (!date.matches("(0\\d|[12]\\d|31)-(0[1-9]|1[012])-\\d\\d\\d\\d")) {
+                if (!date.matches(Constants.DATE_REGEX)) {
                     NewVendingMachine.menu.stringFormat("Введен неправильный формат даты.");
                     break;
                 }
                 Calendar desiredDate = Calendar.getInstance();
                 desiredDate.setTime(NewVendingMachine.simpleDateFormat.parse(strings[2]));
                 String time = strings[3];
-                if (!time.matches("(([01]\\d)|(2[0-3])):((0\\d)|([0-5]\\d))")) {
+                if (!time.matches(Constants.TIME_REGEX)) {
                     NewVendingMachine.menu.stringFormat("Введен неправильный формат времени.");
                     break;
                 }
