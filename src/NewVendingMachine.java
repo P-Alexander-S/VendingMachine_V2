@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class NewVendingMachine {
 
     public static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-    public static ArrayList<History> history = new ArrayList();
+    public static ArrayList<History> history;
     public static MenuFormat menu = new MenuFormat();
 
 
@@ -15,17 +15,19 @@ public class NewVendingMachine {
 
         VendingMachine vendingMachine = new VendingMachine();
         vendingMachine.machineInitialize();
+        history = new ArrayList<>();
         menu.stringFormat("Введите соответствующую цифру, чтобы выполнить операцию");
         StatisticData statisticData;
 
         while (true) {
-            System.out.println(
-                    "1. Показать ассортимент\n" +
-                            "2. Купить товар\n" +
-                            "3. Записать историю покупок\n" +
-                            "4. Записать статистику покупок\n" +
-                            "5. Записать информацию об оставшихся продуктах\n" +
-                            "6. Выход");
+            menu.stringFormat(
+                    """
+                            1. Показать ассортимент
+                            2. Купить товар
+                            3. Записать историю покупок
+                            4. Записать статистику покупок
+                            5. Записать информацию об оставшихся продуктах
+                            6. Выход""");
             int choice = 0;
             try {
                 choice = Integer.parseInt(reader.readLine());
@@ -57,7 +59,6 @@ public class NewVendingMachine {
                                     "! Ничего не поделать, выходим в главное меню.");
                             break;
                         }
-                        continue;
                     }
                     break;
 
