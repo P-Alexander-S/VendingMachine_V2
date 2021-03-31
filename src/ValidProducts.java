@@ -20,6 +20,7 @@ public class ValidProducts extends StatisticData {
     }
 
     //Выводит в файл с текущей датой и временем оставшиеся в автомате товары.
+    @Override
     public void print() {
         Date date1 = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd_MM_yyyy_hh-mm");

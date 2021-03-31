@@ -16,6 +16,7 @@ public class HistoryToFile extends StatisticData {
     }
 
     //Выводит в файл с текущей датой и временем историю покупок, начиная с последней совершенной.
+    @Override
     public void print() {
         Collections.reverse(histories);
         Date date1 = new Date();

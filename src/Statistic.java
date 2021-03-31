@@ -24,6 +24,7 @@ public class Statistic extends StatisticData {
     }
 
     //Выводит в файл с текущей датой и временем прибыльность товара.
+    @Override
     public void print() {
         Date date1 = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd_MM_yyyy_hh-mm");
