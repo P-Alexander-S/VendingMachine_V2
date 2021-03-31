@@ -4,55 +4,49 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class Statistic {
+public class Statistic extends StatisticData {
+    //Класс для записи в файл статистики купленного товара в формате "название товара - общая прибыль".
 
     private Map<String, Integer> statistic = new HashMap<>();
 
-    public void createStatistic(ArrayList<History> histories) {
-        for (int i = 0; i < 9; i++) {
+
+    //В конструкторе инициализируется Map statistic. Первый цикл для общей инициализации (общая прибылью "0"),
+    // второй для заполнения инициализации прибыли купленных товаров, если такие имеются.
+    public Statistic() {
+        ArrayList<History> histories = NewVendingMachine.history;
+
+        for (int i = 0; i < VendingMachine.arrayOfProducts.size(); i++) {
             statistic.put(VendingMachine.arrayOfProducts.get(i), 0);
         }
-
         for (History history : histories) {
             statistic.put(history.getName(), statistic.get(history.getName()) + history.getPrice());
         }
     }
 
-    public void printSortStatArray() {
-
-        ArrayList<String> strings = new ArrayList<>();
-        ArrayList<Integer> integers = new ArrayList<>();
-        for (Map.Entry<String, Integer> map : statistic.entrySet()) {
-            strings.add(map.getKey());
-            integers.add(map.getValue());
-        }
-        for (int i = 0; i < strings.size(); i++) {
-            for (int j = i; j < strings.size(); j++) {
-                if (integers.get(i) < integers.get(j)) {
-                    int a = integers.get(i);
-                    String str = strings.get(i);
-
-                    integers.set(i, integers.get(j));
-                    strings.set(i, strings.get(j));
-
-                    integers.set(j, a);
-                    strings.set(j, str);
-                }
-            }
-        }
-
+    //Выводит в файл с текущей датой и временем прибыльность товара.
+    public void print() {
         Date date1 = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd_MM_yyyy_hh-mm");
         String formatFileName = simpleDateFormat.format(date1.getTime());
+
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(
                     "stat_price_" + formatFileName + ".log", true));
 
-            for (int i = 0; i < strings.size(); i++) {
-                String result = strings.get(i) + " - " + integers.get(i);
-                bufferedWriter.write(result);
-                bufferedWriter.newLine();
-            }
+            //Сортирует Map по значению и записывает в файл.
+            statistic.entrySet().stream().sorted
+                    (Collections.reverseOrder(Map.Entry.comparingByValue()))
+                    .forEach(stringIntegerEntry ->
+                            {
+                                try {
+                                    bufferedWriter.write(stringIntegerEntry.getKey() + " - "
+                                            + stringIntegerEntry.getValue());
+                                    bufferedWriter.newLine();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                    );
             bufferedWriter.close();
         } catch (IOException e) {
             System.out.println("Ошибка файла");

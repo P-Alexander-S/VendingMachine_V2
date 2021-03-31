@@ -4,47 +4,31 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class ValidProducts {
+public class ValidProducts extends StatisticData {
+    //Класс для записи в файл оставшихся товаров.
 
     private ArrayList<Product> validProducts = new ArrayList<>();
 
-    public ArrayList<Product> getSortedValidProducts() {
-        for (int i = 0; i < validProducts.size(); i++) {
-            for (int j = i; j < validProducts.size(); j++) {
-                if (validProducts.get(i).getDateOfExpiration().compareTo
-                        (validProducts.get(j).getDateOfExpiration()) > 0) {
-                    Product product = validProducts.get(i);
-                    validProducts.set(i, validProducts.get(j));
-                    validProducts.set(j, product);
-                }
+    public ValidProducts(VendingMachine vendingMachine) {
+        for (Cell cell : vendingMachine.cells) {
+            if (cell.getQuantity() > 0) {
+                for (Product product : cell.products)
+                    validProducts.add(product);
             }
         }
-        return validProducts;
+        Collections.sort(validProducts, Comparator.comparing(Product::getDateOfExpiration));
     }
 
-    public void getValidProducts(VendingMachine vendingMachine) {
-
-        for (int i = 0; i < vendingMachine.cells.size(); i++) {
-            Cell cell = vendingMachine.cells.get(i);
-            int left = cell.getQuantity();
-            if (left > 0) {
-                for (int j = 0; j < left; j++) {
-                    validProducts.add(cell.products.get(j));
-                }
-            }
-        }
-    }
-
-    public void writeProductsLeft() {
+    //Выводит в файл с текущей датой и временем оставшиеся в автомате товары.
+    public void print() {
         Date date1 = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd_MM_yyyy_hh-mm");
         String formatFileName = simpleDateFormat.format(date1.getTime());
-        ArrayList<Product> vp = getSortedValidProducts();
 
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(
                     "stat_valid_" + formatFileName + ".log", true));
-            for (Product product : vp) {
+            for (Product product : validProducts) {
                 String name = product.getName();
                 String date = NewVendingMachine.simpleDateFormat.format(product.getDateOfExpiration().getTime());
                 String results = name + " " + date;

@@ -16,6 +16,7 @@ public class NewVendingMachine {
         VendingMachine vendingMachine = new VendingMachine();
         vendingMachine.machineInitialize();
         menu.stringFormat("Введите соответствующую цифру, чтобы выполнить операцию");
+        StatisticData statisticData;
 
         while (true) {
             System.out.println(
@@ -61,21 +62,20 @@ public class NewVendingMachine {
                     break;
 
                 case 3:
-                    History.getHistory(history);
+                    statisticData = new HistoryToFile();
+                    statisticData.print();
                     menu.stringFormat("История покупок успешно создана.");
                     break;
 
                 case 4:
-                    Statistic statistic = new Statistic();
-                    statistic.createStatistic(history);
-                    statistic.printSortStatArray();
+                    statisticData = new Statistic();
+                    statisticData.print();
                     menu.stringFormat("Статистика покупок успешно создана.");
                     break;
 
                 case 5:
-                    ValidProducts validProducts = new ValidProducts();
-                    validProducts.getValidProducts(vendingMachine);
-                    validProducts.writeProductsLeft();
+                    statisticData = new ValidProducts(vendingMachine);
+                    statisticData.print();
                     menu.stringFormat("Статистика оставшихся товаров успешно создана.");
                     break;
 

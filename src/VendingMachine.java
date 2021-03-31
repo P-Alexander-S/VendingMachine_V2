@@ -4,6 +4,7 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class VendingMachine {
+    //Содержит список названий товаров и ячеек, а так же массив проинициализированных ячеек.
 
     public static ArrayList<String> arrayOfProducts = new ArrayList<>(Arrays.asList("Mango", "Melon",
             "Watermelon", "Lemon", "Orange", "Banana", "Peach", "Apple", "Cherry"));
@@ -16,6 +17,8 @@ public class VendingMachine {
 
     }
 
+    //Метод случайным образом определяет какой тип товара будет в ячейке, а также инициализирует её (заполняет торговый
+    // автомат).
     public void machineInitialize() {
         Collections.shuffle(arrayOfProducts);
         for (int i = 0; i < numberOfCell.size(); i++) {
@@ -23,16 +26,20 @@ public class VendingMachine {
         }
     }
 
+    //Метод выводит в консоль информацию о всех товарах
     public void printInfo() {
         System.out.println("№ | Name | Price | Quantity");
-        for (int i = 0; i < cells.size(); i++) {
+        for (Cell cell : cells) {
             System.out.println("----------------------");
-            Cell cell = cells.get(i);
             System.out.printf("%s | %s | %d | %d \n", cell.cellNumber, cell.productName, cell.priceOfProductInCell,
                     cell.getQuantity());
         }
     }
 
+    //Метод считыет с консоли строку, проверяет на соответствие указанному шаблону, затем проверяет количество товара,
+    // количество денег пользователя и не будет ли испорчен товар. Если все в порядке - записывает данные о купленном
+    // товаре в историю (а эту историю записывает в массив иторий), удаляет этот товар из ячейки и уменьшает
+    // кол-во товара там на 1.
     public void buy() {
         while (true) {
             NewVendingMachine.menu.stringFormat("Введите номер ячейки, цену, дату и время приобретения товара." +
@@ -64,9 +71,7 @@ public class VendingMachine {
                     break;
                 }
 
-
                 Cell desiredCell = null;
-
                 try {
                     desiredCell = cells.get(numberOfCell.indexOf(desiredCellNum));
                 } catch (Exception e) {

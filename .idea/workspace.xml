@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5d080c9-7a5e-4809-be87-33a0c0627953" name="Default Changelist" comment="Commit">
+      <change afterPath="$PROJECT_DIR$/src/HistoryToFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/StatisticData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/History.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NewVendingMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NewVendingMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Statistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Statistic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ValidProducts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ValidProducts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/VendingMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VendingMachine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="D:/VendingMachine_V2-master" />
+    <property name="last_opened_file_path" value="D:/Programs/WorkTask/VendingMachine_V2-master" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -83,7 +90,21 @@
       <option name="project" value="LOCAL" />
       <updated>1616699003178</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Commit">
+      <created>1616926586974</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1616926586974</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Commit">
+      <created>1616926735868</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1616926735868</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

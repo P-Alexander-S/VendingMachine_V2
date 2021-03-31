@@ -1,6 +1,12 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Cell {
+// У каждой ячейки есть номер, цена и название товара, который там находится.
+// Так же есть оставшееся количество товара в ячейке.
+// Ячейки создаются в VendingMachine.
+// Так как название и цена товаров в ячейке совпадают, они записываются в параметрах конструктора Product.
 
     String productName;
     String cellNumber;
@@ -28,16 +34,8 @@ public class Cell {
         this.quantity = quantity;
     }
 
+    //Сортирует товар в ячейке по сроку годности (от меньшего к большему)
     public void cellSort(ArrayList<Product> arrayList) {
-        for (int i = 0; i < arrayList.size(); i++) {
-            for (int j = i; j < arrayList.size(); j++) {
-                if (arrayList.get(i).getDateOfExpiration().compareTo
-                        (arrayList.get(j).getDateOfExpiration()) > 0) {
-                    Product product = arrayList.get(i);
-                    arrayList.set(i, arrayList.get(j));
-                    arrayList.set(j, product);
-                }
-            }
-        }
+        Collections.sort(arrayList, Comparator.comparing(Product::getDateOfExpiration));
     }
 }

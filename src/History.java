@@ -1,11 +1,7 @@
-import java.io.*;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
 
 public class History {
+    //Данный класс содержит информацию о купленном товаре.
 
     private Calendar calendar;
     private String time;
@@ -41,29 +37,4 @@ public class History {
         this.time = time;
     }
 
-    public static void getHistory(ArrayList<History> historyArrayList) {
-
-        ArrayList<History> histories = historyArrayList;
-        Collections.reverse(histories);
-        Date date1 = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd_MM_yyyy_hh-mm");
-        String formatFileName = simpleDateFormat.format(date1.getTime());
-
-        try {
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(
-                    "history_" + formatFileName + ".log", true));
-            for (History history : histories) {
-                String date = NewVendingMachine.simpleDateFormat.format(history.getCalendar().getTime());
-                String time = history.getTime();
-                String name = history.getName();
-                int price = history.getPrice();
-                String results = date + " " + time + " " + name + " " + price;
-                bufferedWriter.write(results);
-                bufferedWriter.newLine();
-            }
-            bufferedWriter.close();
-        } catch (IOException e) {
-            System.out.println("Ошибка файла");
-        }
-    }
 }
